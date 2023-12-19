@@ -1,14 +1,16 @@
 import React, { createContext, useState } from 'react'
 
-let Mycontext=createContext()
+export const Mycontext=createContext()
 export default function ContentProvider({children}) {
     const [change,setChange]=useState(false)
-const handlechange=()=>{
+      const [count, setCount] = useState(0);
+const handlechange=(value)=>{
     setChange(!change)
+    setCount((pre)=>pre+value)
 }
 
   return (
-    <Mycontext.Provider value={{handlechange,change}}>
+    <Mycontext.Provider value={{handlechange,change,count}}>
       {children}
     </Mycontext.Provider>
   )
